@@ -6,16 +6,27 @@ class App extends React.Component {
         "age" : 30
     }
 
-    handleClick(e) {
+    handleClick = (e) => {
         console.log(e.target);
     }
 
-    handleMouseOver(e) {
+    handleMouseOver = (e) => {
         console.log(e.target, e.pageX);
     }
 
-    handleCopy(e) {
+    handleCopy = (e) => {
         console.log("write something original");
+    }
+
+    handleChange = (e) => {
+        this.setState({
+            name: e.target.value
+        });
+    }
+
+    handleSubmit = (e) => {
+        e.preventDefault();
+        console.log(this.state.name);
     }
 
     render() {
@@ -26,6 +37,12 @@ class App extends React.Component {
                 <button onClick={this.handleClick}>Click Me</button>
                 <button onMouseOver={this.handleMouseOver}>Hover Me</button>
                 <p onCopy={this.handleCopy}>Dont copy this para</p>
+
+                <form onSubmit={this.handleSubmit}>
+                    <input type="text" onChange={this.handleChange}/>
+                    <button>Submit</button>
+                </form>
+
             </div>
         )
     }
